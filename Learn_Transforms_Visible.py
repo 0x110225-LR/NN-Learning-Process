@@ -37,4 +37,11 @@ trans_compose = transforms.Compose([trans_resize_2, trans_totensor]) #流水线�
 img_resize_2 = trans_compose(img)
 writer.add_image("Resize-2", img_resize_2, 0)
 
+# RandomCrop对图片进行随机裁剪
+trans_random = transforms.RandomCrop(20)
+trans_compose_2 = transforms.Compose([trans_random, trans_totensor])
+for i in range(100):
+    img_crop = trans_compose_2(img)
+    writer.add_image("RandomCrop", img_crop, i)
+
 writer.close()
